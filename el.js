@@ -42,6 +42,9 @@ function el(tagName) {
             htmlProps[key]
           ) {
             node[key] = val
+            if (key === "id" && Array.isArray(val)) {
+              node[key] = val.join(".")
+            }
             //set synthetic events for onUpperCaseName
             if (
               key[0] === "o" &&
