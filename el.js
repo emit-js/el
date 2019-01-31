@@ -16,6 +16,8 @@ module.exports = function(dot) {
 
   dot.state.el = { events: {} }
   dot.el = el.bind(dot.state.el)
+
+  dot.beforeAny("elList", elList)
 }
 
 function el(tagName) {
@@ -90,4 +92,30 @@ function el(tagName) {
     }
   }
   return node
+}
+
+function elList(prop, arg, dot) {
+  var propStr = prop.join(".")
+  var el = document.getElementById(propStr)
+  var v = dot.get(prop)
+
+  if (!el || !v) {
+    return
+  }
+
+  var keys = Object.keys(v),
+    nodes = el.childNodes
+
+  var k = keys.map(function(id) {
+    return propStr + "." + id
+  })
+
+  for (var child in nodes) {
+    var n = nodes[child]
+    if (n.remove && k.indexOf(n.id) === -1) {
+      n.remove()
+    }
+  }
+
+  return keys
 }

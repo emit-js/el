@@ -7,6 +7,7 @@ var dot = require("dot-event")(),
 var window = new JSDOM().window
 
 require("./")(dot)
+
 var el = dot.el
 
 global.document = window.document
@@ -125,4 +126,18 @@ test("element - nested reference", function() {
 
   kin.update("B")
   expect(kid.textContent).toBe("B")
+})
+
+test("element list", function() {
+  dot.get = function() {
+    return { 1: true, 2: true }
+  }
+  var main = el("div", { id: "test" }, [
+    el("div", { id: "test.1" }),
+    el("div", { id: "test.3" }),
+  ])
+  document.body.appendChild(main)
+  dot.elList("test")
+  expect(main.childNodes.length).toBe(1)
+  expect(main.childNodes[0].id).toBe("test.1")
 })
