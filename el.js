@@ -103,7 +103,9 @@ function elList(prop, arg, dot) {
     return
   }
 
-  var keys = Object.keys(v),
+  var keys = v.map(function(d) {
+      return d.id
+    }),
     nodes = el.childNodes
 
   var k = keys.map(function(id) {
