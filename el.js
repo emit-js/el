@@ -95,29 +95,71 @@ function el(tagName) {
 }
 
 function elList(prop, arg, dot) {
-  var propStr = prop.join(".")
+  var propStr = prop.join("."),
+    v = dot.get(prop)
+
   var el = document.getElementById(propStr)
-  var v = dot.get(prop)
 
   if (!el || !v) {
     return
   }
 
-  var keys = v.map(function(d) {
-      return d.id
-    }),
-    nodes = el.childNodes
+  var ids = v.map(function(d) {
+    return d.id.toString()
+  })
 
-  var k = keys.map(function(id) {
+  var propIds = ids.map(function(id) {
     return propStr + "." + id
   })
 
-  for (var child in nodes) {
-    var n = nodes[child]
-    if (n.remove && k.indexOf(n.id) === -1) {
-      n.remove()
+  var nodes = collectNodes(el, propIds)
+
+  var after = false,
+    lastNode = nodes[0]
+
+  for (var i = 0; i < propIds.length; i++) {
+    var id = propIds[i]
+
+    if (!lastNode || id !== lastNode.id) {
+      var newNode = dot[arg.event](prop, ids[i])
+
+      if (lastNode) {
+        lastNode[after ? "after" : "before"](newNode)
+
+        if (after) {
+          lastNode = newNode
+        }
+      } else {
+        el.appendChild(newNode)
+      }
+    } else {
+      dot[arg.event](prop, ids[i], { element: lastNode })
+
+      if (lastNode && lastNode.nextSibling) {
+        lastNode = lastNode.nextSibling
+      } else {
+        after = true
+      }
     }
   }
 
-  return keys
+  return propIds
+}
+
+function collectNodes(el, propIds) {
+  var node = el.childNodes[0],
+    nodes = []
+
+  while (node) {
+    if (propIds.indexOf(node.id) > -1) {
+      nodes.push(node)
+      node = node.nextSibling
+    } else {
+      var old = node
+      node = node.nextSibling
+      old.remove()
+    }
+  }
+
+  return nodes
 }

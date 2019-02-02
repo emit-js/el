@@ -130,14 +130,33 @@ test("element - nested reference", function() {
 
 test("element list", function() {
   dot.get = function() {
-    return { 1: true, 2: true }
+    return [
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
+      { id: 5 },
+      { id: 6 },
+    ]
   }
+
+  dot.beforeAny("test", function(prop) {
+    return el("div", { id: prop.join(".") })
+  })
+
   var main = el("div", { id: "test" }, [
-    el("div", { id: "test.1" }),
     el("div", { id: "test.3" }),
+    el("div", { id: "test.4" }),
+    el("div", { id: "test.5" }),
   ])
+
   document.body.appendChild(main)
-  dot.elList("test")
-  expect(main.childNodes.length).toBe(1)
+
+  dot.elList("test", { event: "test" })
+
+  expect(main.childNodes.length).toBe(5)
   expect(main.childNodes[0].id).toBe("test.1")
+  expect(main.childNodes[1].id).toBe("test.2")
+  expect(main.childNodes[2].id).toBe("test.3")
+  expect(main.childNodes[3].id).toBe("test.5")
+  expect(main.childNodes[4].id).toBe("test.6")
 })
