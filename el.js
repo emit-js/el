@@ -17,7 +17,7 @@ module.exports = function(dot) {
   dot.state.el = { events: {} }
   dot.el = el.bind(dot.state.el)
 
-  dot.beforeAny("elList", elList)
+  dot.any("elList", elList)
 }
 
 function el(tagName) {

@@ -139,7 +139,7 @@ test("element list", function() {
     ]
   }
 
-  dot.beforeAny("test", function(prop) {
+  dot.any("test", function(prop) {
     return el("div", { id: prop.join(".") })
   })
 

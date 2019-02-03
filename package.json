@@ -22,7 +22,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "dot-event": "next2",
+    "dot-event": "3.0.29",
     "eslint": "5.12.1",
     "eslint-config-prettier": "4.0.0",
     "eslint-plugin-prettier": "3.0.1",
