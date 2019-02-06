@@ -65,6 +65,14 @@ dot.elList("myId", { event: "myView" })
 
 The `dot.elList` helper works with SSR element lists, removing, updating, and inserting where necessary.
 
+## Related composers
+
+| Library    | Description    | URL                                     |
+| ---------- | -------------- | --------------------------------------- |
+| controller | DOM controller | https://github.com/dot-event/controller |
+| render     | SSR render     | https://github.com/dot-event/render     |
+| view       | DOM view       | https://github.com/dot-event/view       |
+
 ## Credit
 
 This library borrows heavily from [attodom](https://github.com/hville/attodom).
