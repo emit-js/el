@@ -25,7 +25,7 @@ require("@dot-event/el")(dot)
 
 ## Usage
 
-The `dot.el` API works well with [@dot-event/view](https://github.com/dot-event/view) and JSX:
+The `dot.el` API works well with JSX and [@dot-event/view](https://github.com/dot-event/view) components:
 
 ```js
 /** @jsx dot.el */
@@ -34,7 +34,7 @@ export default function(dot) {
   if (dot.myView) {
     return
   }
-  dot.view("myView", { render, update })
+  dot.view("myView", { render })
 }
 
 function render(prop, arg, dot) {
