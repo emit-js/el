@@ -69,9 +69,9 @@ The `dot.elList` helper works with SSR elements, removing, updating, and inserti
 
 | Library    | Description    | URL                                     |
 | ---------- | -------------- | --------------------------------------- |
-| controller | DOM controller | https://github.com/dot-event/controller |
-| render     | SSR render     | https://github.com/dot-event/render     |
-| view       | DOM view       | https://github.com/dot-event/view       |
+| controller | DOM controller | https://github.com/dot-event/controller#readme |
+| render     | SSR render     | https://github.com/dot-event/render#readme     |
+| view       | DOM view       | https://github.com/dot-event/view#readme       |
 
 ## Credit
 
