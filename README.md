@@ -46,7 +46,7 @@ Then use it:
 
 ```js
 require("./myView").default(dot)
-const el = dot.myView("myId") // replaces #myId with element from render
+dot.myView("myId") // `render` element to #myId
 ```
 
 ## List helper
