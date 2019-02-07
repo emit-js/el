@@ -25,7 +25,7 @@ require("@dot-event/el")(dot)
 
 ## Usage
 
-The `dot.el` API works well with JSX and [@dot-event/view](https://github.com/dot-event/view) components:
+The `dot.el` API works well with JSX and [view components](https://github.com/dot-event/view):
 
 ```js
 /** @jsx dot.el */
@@ -57,13 +57,13 @@ A common pattern is to set an array of objects in the [store](https://github.com
 dot.set("myId", [{id: 1}, {id: 2}])
 ```
 
-And create a list of elements using a particular view component:
+And create a list of elements using a particular [view component](https://github.com/dot-event/view):
 
 ```js
 dot.elList("myId", { event: "myView" })
 ```
 
-The `dot.elList` helper works with SSR element lists, removing, updating, and inserting where necessary.
+The `dot.elList` helper works with SSR elements, removing, updating, and inserting where necessary.
 
 ## Related composers
 
