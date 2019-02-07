@@ -1,6 +1,6 @@
 # @dot-event/el
 
-dot-event dom elements
+[dot-event](https://github.com/dot-event/dot-event2#readme) dom elements
 
 ![element](element.gif)
 
