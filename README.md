@@ -8,8 +8,7 @@ dot-event dom elements
 
 This library allows you to write JSX to define [pure DOM elements](https://developer.mozilla.org/en-US/docs/Web/API/Element) and manage element lists.
 
-✅ SSR
-🚫 No virtual dom!
+✅ SSR &nbsp; 🚫 No virtual dom!
 
 ## Install
 
