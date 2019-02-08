@@ -1,6 +1,6 @@
 # @dot-event/el
 
-[dot-event](https://github.com/dot-event/dot-event2#readme) dom elements
+[dot-event](https://github.com/dot-event/dot-event#readme) dom elements
 
 ![element](element.gif)
 
@@ -51,7 +51,7 @@ dot.myView("myId") // `render` element to #myId
 
 ## List helper
 
-A common pattern is to set an array of objects in the [store](https://github.com/dot-event/store2):
+A common pattern is to set an array of objects in the [store](https://github.com/dot-event/store):
 
 ```js
 dot.set("myId", [{id: 1}, {id: 2}])
