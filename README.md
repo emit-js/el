@@ -31,9 +31,6 @@ The `dot.el` API works well with JSX and [view components](https://github.com/do
 /** @jsx dot.el */
 
 export default function(dot) {
-  if (dot.myView) {
-    return
-  }
   dot.view("myView", { render })
 }
 
