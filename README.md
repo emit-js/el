@@ -30,7 +30,7 @@ The `dot.el` API works well with JSX and [view components](https://github.com/do
 ```js
 /** @jsx dot.el */
 
-export default function(dot) {
+module.exports = function(dot) {
   dot.view("myView", { render })
 }
 
@@ -42,7 +42,7 @@ function render(prop, arg, dot) {
 Then use it:
 
 ```js
-require("./myView").default(dot)
+require("./myView")(dot)
 dot.myView("myId") // `render` element to #myId
 ```
 
