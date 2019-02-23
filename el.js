@@ -17,6 +17,7 @@ module.exports = function(dot) {
   dot.state.el = { events: {} }
   dot.el = el.bind(dot.state.el)
 
+  dot.any("elFind", elFind)
   dot.any("elList", elList)
 }
 
@@ -92,6 +93,16 @@ function el(tagName) {
     }
   }
   return node
+}
+
+function elFind(prop, arg) {
+  var p = prop.slice()
+
+  if (typeof arg === "number") {
+    p.splice(arg, 1)
+  }
+
+  return document.getElementById(p.join("."))
 }
 
 function elList(prop, arg, dot) {

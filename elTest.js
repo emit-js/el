@@ -160,3 +160,16 @@ test("element list", function() {
   expect(main.childNodes[3].id).toBe("test.5")
   expect(main.childNodes[4].id).toBe("test.6")
 })
+
+test("element find", function() {
+  var main = el("div", { id: "hello.world" })
+
+  document.body.appendChild(main)
+
+  expect(dot.elFind("hello", "world").id).toBe(
+    "hello.world"
+  )
+  expect(dot.elFind("hello", "my", "world", -2).id).toBe(
+    "hello.world"
+  )
+})
