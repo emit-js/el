@@ -10,12 +10,20 @@ var htmlProps = {
 }
 
 module.exports = function(dot) {
-  if (dot.state.el) {
+  var state = dot.state
+
+  if (state.el) {
     return
   }
 
-  dot.state.el = { events: {} }
-  dot.el = el.bind(dot.state.el)
+  state.el = { events: {} }
+  dot.el = el.bind(state.el)
+
+  if (state.log) {
+    state.log.elFind = state.log.elFind || {
+      info: "debug",
+    }
+  }
 
   dot.any("elFind", elFind)
   dot.any("elList", elList)
@@ -99,7 +107,9 @@ function elFind(prop, arg) {
   var p = prop.slice()
 
   if (typeof arg === "number") {
-    p.splice(arg, 1)
+    p.splice(arg, p.length + arg)
+  } else if (Array.isArray(arg)) {
+    p.splice(arg[0], arg[1])
   }
 
   return document.getElementById(p.join("."))
