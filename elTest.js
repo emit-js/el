@@ -169,16 +169,21 @@ test("element find", function() {
   expect(dot.elFind("hello", "world").id).toBe(
     "hello.world"
   )
+
   expect(dot.elFind("hello", "world", "again", -1).id).toBe(
     "hello.world"
   )
   expect(
     dot.elFind("hello", "world", "again", "again", -2).id
   ).toBe("hello.world")
+
   expect(
-    dot.elFind("hello", "my", "world", [-2, 1]).id
+    dot.elFind("hello", "my", "world", { arg: [-2, 1] }).id
   ).toBe("hello.world")
+
   expect(
-    dot.elFind("hello", "my", "only", "world", [-3, 2]).id
+    dot.elFind("hello", "my", "only", "world", {
+      arg: [-3, 2],
+    }).id
   ).toBe("hello.world")
 })
