@@ -19,11 +19,7 @@ module.exports = function(dot) {
   state.el = { events: {} }
   dot.el = el.bind(state.el)
 
-  if (state.log) {
-    state.log.elFind = state.log.elFind || {
-      info: "debug",
-    }
-  }
+  dot("logLevel", "elFind", { info: "debug" })
 
   dot.any("elFind", elFind)
   dot.any("elList", elList)
