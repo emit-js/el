@@ -99,16 +99,8 @@ function el(tagName) {
   return node
 }
 
-function elFind(prop, arg) {
-  var p = prop.slice()
-
-  if (typeof arg === "number") {
-    p.splice(arg, p.length + arg)
-  } else if (Array.isArray(arg)) {
-    p.splice(arg[0], arg[1])
-  }
-
-  return document.getElementById(p.join("."))
+function elFind(prop) {
+  return document.getElementById(prop.join("."))
 }
 
 function elList(prop, arg, dot) {
