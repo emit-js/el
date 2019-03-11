@@ -10,14 +10,13 @@ var htmlProps = {
 }
 
 module.exports = function(dot) {
-  var state = dot.state
-
-  if (state.el) {
+  if (dot.el) {
     return
   }
 
-  state.el = { events: {} }
-  dot.el = el.bind(state.el)
+  dot.state.el = { events: {} }
+
+  dot.el = el.bind(dot.state.el)
 
   dot("logLevel", "elFind", { info: "debug" })
 
