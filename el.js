@@ -9,19 +9,19 @@ var htmlProps = {
   value: true,
 }
 
-module.exports = function(dot) {
-  if (dot.el) {
+module.exports = function(emit) {
+  if (emit.el) {
     return
   }
 
-  dot.state.el = { events: {} }
+  emit.state.el = { events: {} }
 
-  dot.el = el.bind(dot.state.el)
+  emit.el = el.bind(emit.state.el)
 
-  dot("logLevel", "elFind", { info: "debug" })
+  emit("logLevel", "elFind", { info: "debug" })
 
-  dot.any("elFind", elFind)
-  dot.any("elList", elList)
+  emit.any("elFind", { arg: false, listener: elFind })
+  emit.any("elList", elList)
 }
 
 function el(tagName) {
@@ -98,13 +98,13 @@ function el(tagName) {
   return node
 }
 
-function elFind(prop) {
+function elFind(arg, prop) {
   return document.getElementById(prop.join("."))
 }
 
-function elList(prop, arg, dot) {
+function elList(arg, prop, emit) {
   var propStr = prop.join("."),
-    v = dot.get(prop)
+    v = emit.get(prop)
 
   var el = document.getElementById(propStr)
 
@@ -129,7 +129,7 @@ function elList(prop, arg, dot) {
     var id = propIds[i]
 
     if (!lastNode || id !== lastNode.id) {
-      var newNode = dot[arg.event](prop, ids[i])
+      var newNode = emit[arg.event](prop, ids[i], null)
 
       if (lastNode) {
         lastNode[after ? "after" : "before"](newNode)
@@ -141,7 +141,7 @@ function elList(prop, arg, dot) {
         el.appendChild(newNode)
       }
     } else {
-      dot[arg.event](prop, ids[i], { element: lastNode })
+      emit[arg.event](prop, ids[i], { element: lastNode })
 
       if (lastNode && lastNode.nextSibling) {
         lastNode = lastNode.nextSibling

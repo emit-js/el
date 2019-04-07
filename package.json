@@ -1,20 +1,20 @@
 {
-  "name": "@dot-event/el",
+  "name": "@emit-js/el",
   "version": "0.0.12",
-  "description": "dot-event dom elements",
+  "description": "emit dom elements",
   "keywords": [
-    "dot-event",
+    "@emit-js/emit",
     "dom",
     "elements"
   ],
-  "author": "dot-event <oss@dot-event.io>",
+  "author": "emit <emit@emit-js.com>",
   "main": "el.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/dot-event/el.git"
+    "url": "git+ssh://git@github.com/emit-js/el.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com/dot-event/el#readme",
+  "homepage": "https://github.com/emit-js/el#readme",
   "scripts": {
     "fix": "npm run lint -- --fix",
     "lint": "eslint --ignore-path .gitignore --ext=js .",
@@ -22,12 +22,12 @@
     "test": "jest"
   },
   "devDependencies": {
-    "dot-event": "3.2.2",
+    "@emit-js/emit": "3.2.8",
     "eslint": "5.16.0",
     "eslint-config-prettier": "4.1.0",
     "eslint-plugin-prettier": "3.0.1",
     "husky": "1.3.1",
-    "jest": "24.5.0",
+    "jest": "24.7.1",
     "jsdom": "13.2.0",
     "lint-staged": "8.1.5",
     "prettier": "1.16.4"

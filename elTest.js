@@ -1,14 +1,14 @@
 /* global document */
 /* eslint-env jest */
 
-var dot = require("dot-event")(),
+var emit = require("@emit-js/emit")(),
   JSDOM = require("jsdom").JSDOM
 
 var window = new JSDOM().window
 
-require("./")(dot)
+require("./")(emit)
 
-var el = dot.el
+var el = emit.el
 
 global.document = window.document
 
@@ -129,7 +129,7 @@ test("element - nested reference", function() {
 })
 
 test("element list", function() {
-  dot.get = function() {
+  emit.get = function() {
     return [
       { id: 1 },
       { id: 2 },
@@ -139,7 +139,7 @@ test("element list", function() {
     ]
   }
 
-  dot.any("test", function(prop) {
+  emit.any("test", function(arg, prop) {
     return el("div", { id: prop.join(".") })
   })
 
@@ -151,7 +151,7 @@ test("element list", function() {
 
   document.body.appendChild(main)
 
-  dot.elList("test", { event: "test" })
+  emit.elList("test", { event: "test" })
 
   expect(main.childNodes.length).toBe(5)
   expect(main.childNodes[0].id).toBe("test.1")
@@ -166,7 +166,7 @@ test("element find", function() {
 
   document.body.appendChild(main)
 
-  expect(dot.elFind("hello", "world").id).toBe(
+  expect(emit.elFind("hello", "world").id).toBe(
     "hello.world"
   )
 })
