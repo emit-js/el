@@ -1,6 +1,6 @@
 {
   "name": "@emit-js/el",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "emit dom elements",
   "keywords": [
     "emit",
